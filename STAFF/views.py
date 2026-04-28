@@ -56,7 +56,7 @@ def add_staff(request):
         profile_pic=request.FILES.get("profile_pic")
 
         user=User.objects.create(
-            username=email,
+            username=f_name,
             first_name = f_name,
             last_name = l_name,
             email = email,

@@ -32,7 +32,7 @@ def login_page(request):
             else:
                 messages.warning(request,"You are not authorized as staff yet. Please wait for admin approval.")
         else:
-            if not User.objects.filter(username=email).exists():
+            if not User.objects.filter(username=username).exists():
                 messages.warning(request,"You are not registered yet. Please register..!")
                 return redirect('signup_page')
             else:
@@ -53,13 +53,13 @@ def signup_page(request):
         password = request.POST.get("password")
 
         try:
-            User.objects.get(username = email)
+            User.objects.get(username = f_name)
             messages.warning(request,"Email already exist. Please login...!!")
             return redirect('login_page')
         
         except User.DoesNotExist:
             user = User.objects.create(
-                        username=email,
+                        username=f_name,
                         email=email,
                         first_name=f_name,
                         last_name=l_name,
