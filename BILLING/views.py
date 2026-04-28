@@ -112,10 +112,15 @@ def create_invoice(request):
     # print(products)
     
     if phone:
-        customer = Customer.objects.get(phone=phone)
-        cart=Cart.objects.filter(customer=customer).first()
-        if not cart:
-            cart=Cart.objects.create(customer=customer)
+        customer = Customer.objects.filter(phone=phone).first()
+
+        if customer:
+            cart = Cart.objects.filter(customer=customer).first()
+
+            if not cart:
+                cart = Cart.objects.create(customer=customer)
+        else:
+            cart = None
     if cart:
         due = cart.amount_due
         if due<0:
