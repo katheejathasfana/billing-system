@@ -18,10 +18,13 @@ def index(request):
 
 def login_page(request):
     if request.method == "POST":
-        email = request.POST.get("email")
+        username = request.POST.get("username")
         password = request.POST.get("password")
-        user = authenticate(username=email,password=password)
+        print(username,password)
+        user = authenticate(username=username,password=password)
+        print(user)
         if user is not None:
+            
             if user.is_staff == 1:
                 #admin/staff module
                 login(request,user)
