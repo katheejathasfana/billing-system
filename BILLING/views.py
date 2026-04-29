@@ -387,15 +387,15 @@ def view_invoice(request,id):
     return render(request,"view_invoice.html",locals())
 
 
-def render_to_pdf(html_page,context):
-    template = get_template(html_page)
-    html = template.render(context)
-    response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="invoice.pdf"'
-    pisa_status = pisa.CreatePDF(html, dest = response)
+# def render_to_pdf(html_page,context):
+#     template = get_template(html_page)
+#     html = template.render(context)
+#     response = HttpResponse(content_type='application/pdf')
+#     response['Content-Disposition'] = 'attachment; filename="invoice.pdf"'
+#     pisa_status = pisa.CreatePDF(html, dest = response)
 
 
-    return response if not pisa_status.err else HttpResponse('Error creating pdf')
+#     return response if not pisa_status.err else HttpResponse('Error creating pdf')
 
 
 def invoice_pdf(request,id):
