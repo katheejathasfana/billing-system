@@ -4,7 +4,7 @@ from django.contrib import messages
 from decimal import Decimal
 from django.template.loader import get_template
 from django.http import HttpResponse
-from xhtml2pdf import pisa
+# from xhtml2pdf import pisa
 from django.db.models import Q
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
